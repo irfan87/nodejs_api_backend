@@ -12,7 +12,7 @@ This backend application is an API application to fetch the data of posts, singl
 
 The challenges that I faced was to call the JSONPlaceholder API using fetch, before decided to used Axios. To be general, fetch is mostly used on calling the data from the from and change it as a body, that I assumed as bodyData.
 
-Then before I decided to used Express Async Handler, I applied try catch block, and it works as I expected but still in the controllers, I have to put next() after the catch block and the code itself is quite noisy. 
+Before decided to used Express Async Handler, I applied try catch block, and it works as I expected but still in the controllers, I have to put next() after the catch block and the code itself is quite noisy. 
 
 In the API folder, contain a JSONPlaceholder API url file. Even though it contains only one or two lines, I guess I can enhance a bit to make the request go smooth.
 
