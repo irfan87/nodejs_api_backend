@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import axios from "axios";
+
 import url from "../api/jsonplaceholder.api.js";
 
 // will fetch all posts
@@ -29,14 +30,14 @@ export const getComments = asyncHandler(async (req, res) => {
 		.json({ message: `total of comments: ${data.length}`, ...data });
 });
 
-// will fetch comments from each post
-// for instance, post1 -> [comment1, comment2, comment3, etc...]
-export const getCommentsByPost = asyncHandler(async (req, res) => {
-	const postId = req.params.id;
-	const response = await axios.get(`${url}/posts/${postId}/comments`);
+// search comments for each post, with postId, commentId, email or title
+export const searchComment = asyncHandler(async (req, res) => {
+	const keys = req.params.key;
+
+	const response = await axios.get(`${url}/comments/?postId=${keys}`);
 	const data = await response.data;
 
 	res
 		.status(200)
-		.json({ message: `total of comments: ${data.length}`, ...data });
+		.json({ message: `total of comments: ${data.length}`, data: { ...data } });
 });
